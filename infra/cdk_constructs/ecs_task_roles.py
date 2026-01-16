@@ -15,7 +15,7 @@ class ServiceRolesConstruct(Construct):
         super().__init__(scope, construct_id)
         ecs_task_role=iam.Role(scope,"BookingECSTaskRole",assumed_by=iam.ServicePrincipal("ecs-tasks.amazonaws.com"),description="Assumed by ecs tasks")
 
-        ecs_task_execution_role=iam.Role(scope,"BookingECSTaskExecutionRole",assumed_by=iam.ServicePrincipal("ecs-tasks.amazonaws.com"),description="Assumbed by ecs while creating the task",managed_policies=iam.ManagedPolicy.from_aws_managed_policy_name( "service-role/AmazonECSTaskExecutionRolePolicy"))
+        ecs_task_execution_role=iam.Role(scope,"BookingECSTaskExecutionRole",assumed_by=iam.ServicePrincipal("ecs-tasks.amazonaws.com"),description="Assumbed by ecs while creating the task",managed_policies=[iam.ManagedPolicy.from_aws_managed_policy_name( "service-role/AmazonECSTaskExecutionRolePolicy")])
     
         self.ecs_task_role=ecs_task_role
         self.ecs_task_execution_role=ecs_task_execution_role

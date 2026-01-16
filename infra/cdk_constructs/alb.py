@@ -1,5 +1,6 @@
 from aws_cdk import aws_elasticloadbalancingv2 as alb
 from aws_cdk import aws_ec2 as ec2
+import json
 
 from constructs import Construct
 
@@ -12,5 +13,6 @@ class ALBConstruct(Construct):
             "HttpListener",
             port=80,
             open=True,
+            default_action=alb.ListenerAction.fixed_response(status_code=200,content_type="application/json",message_body=json.dumps({"hello":"world"}))
         )
-        
+      
