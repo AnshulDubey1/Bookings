@@ -10,5 +10,5 @@ class User(Base):
     last_name:Mapped[str]=mapped_column(String(100),nullable=False)
     email:Mapped[str]=mapped_column(Text,nullable=False)
     password_hash:Mapped[str]=mapped_column(Text,nullable=False,unique=True)
-    address:Mapped[str|True]=mapped_column(Text)
+    address:Mapped[str|None]=mapped_column(Text)
     created_at:Mapped[datetime]=mapped_column(DateTime,server_default=func.now())
